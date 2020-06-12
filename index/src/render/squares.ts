@@ -1,39 +1,12 @@
 import Two from 'two.js';
+import { SIZE, RATIO, themes } from './themes';
 
 type Rect = Two.Rectangle;
-
-const SIZE = 140;
-const RATIO = 2.64;
-
-interface State {
-  rotation: number;
-  size?: number;
-  coords?: { x: number; y: number };
-}
-
-interface Theme {
-  primary: Two.Color;
-  secondary: Two.Color;
-  state: [State, State, State, State, State];
-}
-
-const themes: { [name: string]: Theme } = {
-  primary: {
-    primary: '#EA2099',
-    secondary: '#92145F',
-    state: [
-      { rotation: 30 * (Math.PI / 180) },
-      { rotation: 45 * (Math.PI / 180) },
-      { rotation: 60 * (Math.PI / 180) },
-      { rotation: 75 * (Math.PI / 180) },
-      { rotation: 135 * (Math.PI / 180), size: SIZE / RATIO },
-    ],
-  },
-};
 
 export default class Squares {
   private $root: Two;
   private $rects: [Rect, Rect, Rect, Rect, Rect];
+  private $theme = 'primary';
   constructor(root: HTMLDivElement) {
     this.$root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
     const config = this.getConfig();
@@ -49,7 +22,8 @@ export default class Squares {
         SIZE / RATIO
       ),
     ];
-    this.setStyles('primary');
+    this.setStyles(this.$theme);
+    this.$root.bind('resize', this.resize);
   }
   private getConfig = (): [number, number, number, number] => [
     this.$root.width / 2,
@@ -57,6 +31,19 @@ export default class Squares {
     SIZE,
     SIZE,
   ];
+  private resize = () => {
+    const config = this.getConfig();
+    for (let i in this.$rects) {
+      const coords = themes[this.$theme].state[i].coords;
+      if (coords) {
+        this.$rects[i].translation.x = coords.x + config[0];
+        this.$rects[i].translation.y = coords.y + config[1];
+      } else {
+        this.$rects[i].translation.x = config[0];
+        this.$rects[i].translation.y = config[1];
+      }
+    }
+  };
   private setStyles = (name: string) => {
     const theme = themes[name];
     for (let i in this.$rects) {
