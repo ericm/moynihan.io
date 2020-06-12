@@ -9,7 +9,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/two.js": "^0.7.2",
     "parcel": "^1.12.4",
     "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "two.js": "^0.7.0-stable.1"
   }
 }
