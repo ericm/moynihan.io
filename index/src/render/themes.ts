@@ -6,6 +6,7 @@ export const RATIO = 2.64;
 export interface State {
   rotation: number;
   size?: number;
+  scale?: number;
   coords?: { x: number; y: number };
 }
 
@@ -32,12 +33,12 @@ export const themes: { [name: string]: Theme } = {
     secondary: '#5611AD',
     state: [
       { rotation: 45 * (Math.PI / 180) },
-      { rotation: 45 * (Math.PI / 180) },
-      { rotation: 45 * (Math.PI / 180) },
+      { rotation: 45 * (Math.PI / 180), scale: 0.9 },
+      { rotation: 45 * (Math.PI / 180), scale: 0.75, coords: { x: 0, y: -25 } },
       {
         rotation: 45 * (Math.PI / 180),
-        size: 2.64,
-        coords: { x: 0, y: SIZE / RATIO / 2 },
+        scale: 0.8,
+        coords: { x: 0, y: -50 },
       },
       { rotation: 45 * (Math.PI / 180), size: SIZE / RATIO },
     ],

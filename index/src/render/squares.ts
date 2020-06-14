@@ -6,7 +6,7 @@ type Rect = Two.Rectangle;
 export default class Squares {
   private $root: Two;
   private $rects: [Rect, Rect, Rect, Rect, Rect];
-  private $theme = 'primary';
+  private $theme = 'north';
   constructor(root: HTMLDivElement) {
     this.$root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
     const config = this.getConfig();
@@ -46,12 +46,19 @@ export default class Squares {
   };
   private setStyles = (name: string) => {
     const theme = themes[name];
+    const config = this.getConfig();
     for (let i in this.$rects) {
       if (+i % 2 === 0) {
         this.$rects[i].fill = theme.secondary;
       } else {
         this.$rects[i].fill = theme.primary;
       }
+      const coords = themes[this.$theme].state[i].coords;
+      if (coords) {
+        this.$rects[i].translation.x = coords.x + config[0];
+        this.$rects[i].translation.y = coords.y + config[1];
+      }
+      this.$rects[i].scale = themes[this.$theme].state[i].scale ?? 1;
       this.$rects[i].rotation = theme.state[i].rotation;
       this.$rects[i].noStroke();
     }
