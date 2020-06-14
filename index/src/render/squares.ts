@@ -6,7 +6,7 @@ type Rect = Two.Rectangle;
 export default class Squares {
   private $root: Two;
   private $rects: [Rect, Rect, Rect, Rect, Rect];
-  private $theme = 'north';
+  private $theme = 'primary';
   constructor(root: HTMLDivElement) {
     this.$root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
     const config = this.getConfig();
@@ -24,7 +24,13 @@ export default class Squares {
     ];
     this.setStyles(this.$theme);
     this.$root.bind('resize', this.resize);
+    this.$root.bind('update', this.update);
   }
+  set theme(t: string) {
+    this.$theme = t;
+    this.setStyles(t);
+  }
+  private update = (c: number) => {};
   private getConfig = (): [number, number, number, number] => [
     this.$root.width / 2,
     this.$root.height / 2,
