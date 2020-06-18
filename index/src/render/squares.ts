@@ -1,4 +1,5 @@
 import Two from 'two.js';
+import * as TWEEN from 'tweenjs/lib/tweenjs';
 import { SIZE, RATIO, themes } from './themes';
 
 type Rect = Two.Rectangle;
@@ -6,6 +7,13 @@ type Rect = Two.Rectangle;
 export default class Squares {
   private $root: Two;
   private $rects: [Rect, Rect, Rect, Rect, Rect];
+  private $keyframes: [
+    TWEEN.Tween,
+    TWEEN.Tween,
+    TWEEN.Tween,
+    TWEEN.Tween,
+    TWEEN.Tween
+  ];
   private $theme = 'primary';
   constructor(root: HTMLDivElement) {
     this.$root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
@@ -22,6 +30,9 @@ export default class Squares {
         SIZE / RATIO
       ),
     ];
+    this.$rects.forEach((v) => {
+      this.$keyframes.push(new TWEEN.Tween(v.translation));
+    });
     this.setStyles(this.$theme);
     this.$root.bind('resize', this.resize);
     this.$root.bind('update', this.update);
@@ -61,8 +72,10 @@ export default class Squares {
       }
       const coords = themes[this.$theme].state[i].coords;
       if (coords) {
-        this.$rects[i].translation.x = coords.x + config[0];
-        this.$rects[i].translation.y = coords.y + config[1];
+        this.$keyframes[i].to(
+          { x: coords.x + config[0], y: coords.y + config[1] },
+          100
+        );
       }
       this.$rects[i].scale = themes[this.$theme].state[i].scale ?? 1;
       this.$rects[i].rotation = theme.state[i].rotation;

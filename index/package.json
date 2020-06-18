@@ -9,11 +9,14 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/tweenjs": "^1.0.1",
     "@types/two.js": "^0.7.2",
     "parcel": "^1.12.4",
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "createjs": "^1.0.1",
+    "tweenjs": "^1.0.2",
     "two.js": "^0.7.0-stable.1"
   }
 }
