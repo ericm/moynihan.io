@@ -1,5 +1,5 @@
 import Two from 'two.js';
-import * as TWEEN from 'tweenjs/lib/tweenjs';
+import { Tween } from '@tweenjs/tween.js';
 import { SIZE, RATIO, themes } from './themes';
 
 type Rect = Two.Rectangle;
@@ -7,12 +7,12 @@ type Rect = Two.Rectangle;
 export default class Squares {
   private $root: Two;
   private $rects: [Rect, Rect, Rect, Rect, Rect];
-  private $keyframes: [
-    TWEEN.Tween,
-    TWEEN.Tween,
-    TWEEN.Tween,
-    TWEEN.Tween,
-    TWEEN.Tween
+  private $keyframes = [
+    new Tween({ x: 0, y: 0 }),
+    new Tween({ x: 0, y: 0 }),
+    new Tween({ x: 0, y: 0 }),
+    new Tween({ x: 0, y: 0 }),
+    new Tween({ x: 0, y: 0 }),
   ];
   private $theme = 'primary';
   constructor(root: HTMLDivElement) {
@@ -30,8 +30,11 @@ export default class Squares {
         SIZE / RATIO
       ),
     ];
-    this.$rects.forEach((v) => {
-      this.$keyframes.push(new TWEEN.Tween(v.translation));
+    this.$rects.forEach((v, i) => {
+      this.$keyframes[i] = new Tween({
+        x: v.translation.x,
+        y: v.translation.y,
+      });
     });
     this.setStyles(this.$theme);
     this.$root.bind('resize', this.resize);
@@ -72,10 +75,9 @@ export default class Squares {
       }
       const coords = themes[this.$theme].state[i].coords;
       if (coords) {
-        this.$keyframes[i].to(
-          { x: coords.x + config[0], y: coords.y + config[1] },
-          100
-        );
+        this.$keyframes[i]
+          .to({ x: coords.x + config[0], y: coords.y + config[1] }, 100)
+          .start(0);
       }
       this.$rects[i].scale = themes[this.$theme].state[i].scale ?? 1;
       this.$rects[i].rotation = theme.state[i].rotation;
