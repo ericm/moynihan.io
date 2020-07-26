@@ -1,88 +1,108 @@
 import Two from 'two.js';
-import { Tween } from '@tweenjs/tween.js';
+import TWEEN from '@tweenjs/tween.js';
 import { SIZE, RATIO, themes } from './themes';
 
 type Rect = Two.Rectangle;
 
 export default class Squares {
-  private $root: Two;
-  private $rects: [Rect, Rect, Rect, Rect, Rect];
-  private $keyframes = [
-    new Tween({ x: 0, y: 0 }),
-    new Tween({ x: 0, y: 0 }),
-    new Tween({ x: 0, y: 0 }),
-    new Tween({ x: 0, y: 0 }),
-    new Tween({ x: 0, y: 0 }),
+  private _theme = 'primary';
+  private _root: Two;
+  private _rects: [Rect, Rect, Rect, Rect, Rect];
+  private _keyframes = [
+    new TWEEN.Tween({ x: 0, y: 0, rotation: 0, size: 0, scale: 0 }),
+    new TWEEN.Tween({ x: 0, y: 0, rotation: 0, size: 0, scale: 0 }),
+    new TWEEN.Tween({ x: 0, y: 0, rotation: 0, size: 0, scale: 0 }),
+    new TWEEN.Tween({ x: 0, y: 0, rotation: 0, size: 0, scale: 0 }),
+    new TWEEN.Tween({ x: 0, y: 0, rotation: 0, size: 0, scale: 0 }),
   ];
-  private $theme = 'primary';
   constructor(root: HTMLDivElement) {
-    this.$root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
+    this._root = new Two({ fullscreen: true, autostart: true }).appendTo(root);
     const config = this.getConfig();
-    this.$rects = [
-      this.$root.makeRectangle(...config),
-      this.$root.makeRectangle(...config),
-      this.$root.makeRectangle(...config),
-      this.$root.makeRectangle(...config),
-      this.$root.makeRectangle(
+    this._rects = [
+      this._root.makeRectangle(...config),
+      this._root.makeRectangle(...config),
+      this._root.makeRectangle(...config),
+      this._root.makeRectangle(...config),
+      this._root.makeRectangle(
         config[0],
         config[1],
         SIZE / RATIO,
         SIZE / RATIO
       ),
     ];
-    this.$rects.forEach((v, i) => {
-      this.$keyframes[i] = new Tween({
+    this._rects.forEach((v, i) => {
+      if (+i % 2 === 0) {
+        this._rects[i].fill = themes[this._theme].secondary;
+      } else {
+        this._rects[i].fill = themes[this._theme].primary;
+      }
+      this._keyframes[i] = new TWEEN.Tween({
         x: v.translation.x,
         y: v.translation.y,
+        rotation: themes[this._theme].state[i].rotation,
+        size: themes[this._theme].state[i].size,
+        scale: themes[this._theme].state[i].scale,
       });
+      v.rotation = themes[this._theme].state[i].rotation;
+      this._rects[i].noStroke();
     });
-    this.setStyles(this.$theme);
-    this.$root.bind('resize', this.resize);
-    this.$root.bind('update', this.update);
+    this._root.bind('resize', this.resize);
+    this._root.bind('update', this.update);
   }
   set theme(t: string) {
-    this.$theme = t;
+    this._theme = t;
     this.setStyles(t);
   }
   private update = (c: number) => {};
   private getConfig = (): [number, number, number, number] => [
-    this.$root.width / 2,
-    this.$root.height / 2,
+    this._root.width / 2,
+    this._root.height / 2,
     SIZE,
     SIZE,
   ];
   private resize = () => {
     const config = this.getConfig();
-    for (let i in this.$rects) {
-      const coords = themes[this.$theme].state[i].coords;
+    for (let i in this._rects) {
+      const coords = themes[this._theme].state[i].coords;
       if (coords) {
-        this.$rects[i].translation.x = coords.x + config[0];
-        this.$rects[i].translation.y = coords.y + config[1];
+        this._rects[i].translation.x = coords.x + config[0];
+        this._rects[i].translation.y = coords.y + config[1];
       } else {
-        this.$rects[i].translation.x = config[0];
-        this.$rects[i].translation.y = config[1];
+        this._rects[i].translation.x = config[0];
+        this._rects[i].translation.y = config[1];
       }
     }
   };
   private setStyles = (name: string) => {
     const theme = themes[name];
     const config = this.getConfig();
-    for (let i in this.$rects) {
+    for (let i in this._rects) {
       if (+i % 2 === 0) {
-        this.$rects[i].fill = theme.secondary;
+        this._rects[i].fill = theme.secondary;
       } else {
-        this.$rects[i].fill = theme.primary;
+        this._rects[i].fill = theme.primary;
       }
-      const coords = themes[this.$theme].state[i].coords;
-      if (coords) {
-        this.$keyframes[i]
-          .to({ x: coords.x + config[0], y: coords.y + config[1] }, 100)
-          .start(0);
-      }
-      this.$rects[i].scale = themes[this.$theme].state[i].scale ?? 1;
-      this.$rects[i].rotation = theme.state[i].rotation;
-      this.$rects[i].noStroke();
+      const coords = themes[this._theme].state[i].coords;
+      this._keyframes[i]
+        .to(
+          {
+            x: coords?.x + config[0],
+            y: coords?.y + config[1],
+            rotation: theme.state[i].rotation,
+            scale: theme.state[i].scale ?? 1,
+          },
+          100
+        )
+        .repeat(1)
+        .delay(100)
+        .easing(TWEEN.Easing.Cubic.InOut)
+        .onUpdate((o) => {
+          this._rects[i].translation.x = o.x;
+          this._rects[i].translation.y = o.y;
+        })
+        .start(1000);
+      this._rects[i].noStroke();
     }
-    this.$root.render();
+    this._root.render();
   };
 }
