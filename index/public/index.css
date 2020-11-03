@@ -7,17 +7,163 @@
 }
 
 main {
-  background: var(--background);
+  background: url(./bg/1.png) var(--background);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center 0px;
   width: 100%;
   height: 100vh;
 }
 
-#squares {
+.overlay {
   width: 100%;
-  height: 100vh;
-}
-
-button {
   position: fixed;
-  top: 0;
+  height: 100vh;
+}
+
+#filter {
+  backdrop-filter: sepia(90%) blur(2px);
+  animation: oldTime 3s infinite;
+}
+
+#vid2 {
+  background-image: url(./bg/grain2.gif);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+}
+
+#vid1 {
+  background-image: url(./bg/grain1.gif);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  animation: oldMove 1s infinite;
+  transform: scale(1);
+}
+
+nav {
+  position: fixed;
+}
+
+#social {
+  bottom: 1em;
+  right: 1em;
+}
+
+#social i {
+  width: 4em;
+  height: 4em;
+  margin: 0.5em;
+  background-size: contain;
+  display: inline-block;
+  z-index: 1000;
+  transition: filter 0.5s;
+}
+
+#social i:hover {
+  filter: grayscale(100);
+}
+
+@keyframes oldMove {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  51% {
+    transform: scale(2);
+  }
+  52% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1);
+  }
+  71% {
+    transform: scale(1.5);
+  }
+  72% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes oldTime {
+  0% {
+    backdrop-filter: sepia(90%) blur(2px);
+  }
+  10% {
+    backdrop-filter: sepia(90%) blur(2px);
+  }
+  12% {
+    backdrop-filter: sepia(100%) blur(0px);
+  }
+  20% {
+    backdrop-filter: sepia(100%) blur(5px);
+  }
+  22% {
+    backdrop-filter: sepia(50%) blur(0px);
+  }
+  40% {
+    backdrop-filter: sepia(80%) blur(2px);
+  }
+  44% {
+    backdrop-filter: sepia(20%) blur(0px);
+  }
+  54% {
+    backdrop-filter: sepia(100%) blur(0px);
+  }
+  60% {
+    backdrop-filter: sepia(100%) blur(0px);
+  }
+  61% {
+    backdrop-filter: sepia(20%) blur(0px);
+  }
+  75% {
+    backdrop-filter: sepia(80%) blur(3px);
+  }
+  80% {
+    backdrop-filter: sepia(50%) blur(0px);
+  }
+  84% {
+    backdrop-filter: sepia(100%) blur(2px);
+  }
+  90% {
+    backdrop-filter: sepia(60%) blur(0px);
+  }
+  93% {
+    backdrop-filter: sepia(20%) blur(0px);
+  }
+  93% {
+    backdrop-filter: sepia(10%) blur(5px);
+  }
+}
+span {
+  font-family: 'Comfortaa', cursive;
+  color: #fff;
+  position: fixed;
+}
+#logo {
+  font-weight: 600;
+  font-size: 3em;
+  bottom: 1em;
+  left: 0.5em;
+}
+#email {
+  bottom: 1.5em;
+  left: 1.8em;
+}
+
+@media only screen and (max-width: 600px) {
+  #logo {
+    font-size: 2em;
+    left: 0;
+    bottom: 2em;
+    width: 100%;
+    text-align: center;
+  }
 }
