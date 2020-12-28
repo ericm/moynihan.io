@@ -166,4 +166,21 @@ span {
     width: 100%;
     text-align: center;
   }
+  #email {
+    text-align: center;
+    width: 100%;
+    left: 0;
+    bottom: 2em;
+    width: 100%;
+  }
+  #social {
+    bottom: 6.5em;
+    right: 0;
+    width: 100%;
+    text-align: center;
+  }
+  #social i {
+    width: 2em;
+    height: 2em;
+  }
 }
