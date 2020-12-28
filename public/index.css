@@ -65,6 +65,27 @@ nav {
   filter: grayscale(100);
 }
 
+#bar {
+  font-family: 'Staatliches', cursive;
+  color: #fff;
+  position: absolute;
+  top: 50vh;
+  margin-top: -1.5em;
+  width: 100%;
+  text-align: center;
+}
+
+#bar a {
+  margin: 0.2em;
+  font-size: 3em;
+  color: #fff;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
 @keyframes oldMove {
   0% {
     transform: scale(1);
