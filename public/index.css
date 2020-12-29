@@ -79,6 +79,34 @@ nav {
   margin: 0.2em;
   font-size: 3em;
   color: #fff;
+  opacity: 0.5;
+  display: inline-block;
+  position: relative;
+  transition: all 0.5s;
+  overflow: visible;
+  z-index: 3;
+  text-shadow: none;
+}
+
+#bar a:nth-child(1) {
+  transform: skewY(20deg);
+  top: -0.6em;
+}
+
+#bar a:nth-child(3) {
+  top: -0.9em;
+  left: -0.15em;
+  font-size: 2.7em;
+  transform: rotateY(-25deg) skewY(-20deg);
+}
+
+#bar a:hover {
+  top: 0;
+  text-shadow: 0px 0px 15em rgba(0, 0, 0, 1);
+  z-index: 100;
+  font-size: 9em;
+  opacity: 1;
+  transform: rotateY(0deg) skewY(0deg);
 }
 
 a,
@@ -203,5 +231,8 @@ span {
   #social i {
     width: 2em;
     height: 2em;
+  }
+  #bar a:hover {
+    font-size: 4em;
   }
 }
