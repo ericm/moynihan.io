@@ -65,17 +65,25 @@ nav {
   filter: grayscale(100);
 }
 
-#bar {
+.bar {
   font-family: 'Staatliches', cursive;
   color: #fff;
-  position: absolute;
+  position: fixed;
   top: 50vh;
   margin-top: -1.5em;
   width: 100%;
   text-align: center;
+  transition: all 0.3s;
 }
 
-#bar a {
+#navbar {
+  top: 1.5em;
+  background: rgba(8, 8, 8, 0.212);
+  backdrop-filter: blur(5px);
+  padding-left: 25vw;
+}
+
+.bar a {
   margin: 0.2em;
   font-size: 3em;
   color: #fff;
@@ -88,25 +96,38 @@ nav {
   text-shadow: none;
 }
 
-#bar a:nth-child(1) {
+#navbar > a {
+  top: 10px;
+  transform: rotateY(0deg) skewY(0deg);
+  top: 0;
+  left: 0;
+  font-size: 3em;
+}
+
+.bar a:nth-child(1) {
   transform: skewY(20deg);
   top: -0.6em;
 }
 
-#bar a:nth-child(3) {
+.bar a:nth-child(3) {
   top: -0.9em;
   left: -0.15em;
   font-size: 2.7em;
   transform: rotateY(-25deg) skewY(-20deg);
 }
 
-#bar a:hover {
+.bar a:hover {
   top: 0;
   text-shadow: 0px 0px 15em rgba(0, 0, 0, 1);
   z-index: 100;
   font-size: 9em;
   opacity: 1;
   transform: rotateY(0deg) skewY(0deg);
+}
+#navbar > a:hover {
+  font-size: 3em;
+  top: 0;
+  left: 0;
 }
 
 a,
@@ -196,12 +217,22 @@ span {
   color: #fff;
   position: fixed;
 }
-#logo {
+.logo {
   font-weight: 600;
   font-size: 3em;
   bottom: 1em;
   left: 0.5em;
+  z-index: 100;
+  transition: all 0.3s;
+  bottom: none;
 }
+
+#navlogo {
+  top: 0.3em;
+  bottom: none;
+  padding-left: 5vw;
+}
+
 #email {
   bottom: 1.5em;
   left: 1.8em;
@@ -232,7 +263,7 @@ span {
     width: 2em;
     height: 2em;
   }
-  #bar a:hover {
+  .bar a:hover {
     font-size: 4em;
   }
 }

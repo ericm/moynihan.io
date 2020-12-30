@@ -6,18 +6,19 @@ function parseSlug(url: string[]): string {
 
 function init() {
   const url = document.URL.split('/');
+  console.log(url);
   const slug = parseSlug(url);
   route(slug);
 }
 
 function link(e: Event) {
   e.stopPropagation();
-  const slug = (e.target as HTMLAnchorElement).baseURI.split('/');
-  route(parseSlug(slug));
+  const slug = (e.target as HTMLAnchorElement).innerText.toLowerCase();
+  route(slug);
 }
 
-document.addEventListener('load', init);
+window.addEventListener('load', init);
 window.addEventListener('locationchange', init);
 document
-  .querySelectorAll('#bar>a')
+  .querySelectorAll('.bar>a')
   .forEach((e) => e.addEventListener('click', link));
