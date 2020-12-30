@@ -1,4 +1,4 @@
-function route(slug: string) {
+export function route(slug: string) {
   switch (slug) {
     case 'projects':
       break;
@@ -6,5 +6,7 @@ function route(slug: string) {
       break;
     case 'photography':
       break;
+    default:
+      return;
   }
 }
