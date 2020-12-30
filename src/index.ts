@@ -22,3 +22,6 @@ window.addEventListener('locationchange', init);
 document
   .querySelectorAll('.bar>a')
   .forEach((e) => e.addEventListener('click', link));
+document
+  .querySelectorAll('.logo')
+  .forEach((e) => e.addEventListener('click', link));

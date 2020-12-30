@@ -15,6 +15,8 @@ export function route(slug: string) {
       break;
     default:
       document.querySelector('.bar')!!.id = '';
+      document.querySelector('.logo')!!.id = '';
+      window.history.replaceState({}, 'Eric Moynihan', '/');
       return;
   }
   document.querySelector('.bar')!!.id = 'navbar';
