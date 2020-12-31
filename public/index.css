@@ -81,6 +81,7 @@ nav {
   background: rgba(8, 8, 8, 0.212);
   backdrop-filter: blur(5px);
   padding-left: 25vw;
+  height: 5em;
 }
 
 .bar a {
@@ -102,6 +103,10 @@ nav {
   top: 0;
   left: 0;
   font-size: 3em;
+}
+
+#selected {
+  opacity: 1;
 }
 
 .bar a:nth-child(1) {
@@ -224,13 +229,12 @@ span {
   left: 0.5em;
   z-index: 100;
   transition: all 0.3s;
-  bottom: none;
   cursor: pointer;
 }
 
 #navlogo {
   top: 0.3em;
-  bottom: none;
+  bottom: auto;
   padding-left: 5vw;
 }
 
@@ -239,8 +243,32 @@ span {
   left: 1.8em;
 }
 
+@media only screen and (max-width: 950px) {
+  #navlogo {
+    font-size: 1.3em;
+    text-align: left;
+  }
+  #navbar {
+    height: 2.2em;
+  }
+  #navbar > a {
+    font-size: 1.5em;
+    top: -0.1em;
+  }
+}
 @media only screen and (max-width: 600px) {
-  #logo {
+  #navlogo {
+    font-size: 1em;
+    text-align: left;
+  }
+  #navbar {
+    height: 1.7em;
+  }
+  #navbar > a {
+    font-size: 0.85em;
+    top: 0.2em;
+  }
+  .logo {
     font-size: 2em;
     left: 0;
     bottom: 2em;
@@ -263,6 +291,12 @@ span {
   #social i {
     width: 2em;
     height: 2em;
+  }
+  .bar a {
+    font-size: 1.5em;
+  }
+  .bar a:nth-child(3) {
+    font-size: 1.35em;
   }
   .bar a:hover {
     font-size: 4em;
