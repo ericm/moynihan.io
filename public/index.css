@@ -243,6 +243,21 @@ span {
   left: 1.8em;
 }
 
+.root {
+  position: fixed;
+  top: 100vh;
+  height: calc(100vh - 5em);
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.904);
+  backdrop-filter: invert(1);
+  transition: all 0.3s;
+}
+
+#view {
+  top: 5em;
+}
+
 @media only screen and (max-width: 950px) {
   #navlogo {
     font-size: 1.3em;

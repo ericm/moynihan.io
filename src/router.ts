@@ -1,4 +1,5 @@
 export function route(slug: string) {
+  const root = document.querySelector('.root');
   const links = document.querySelectorAll('.bar a');
   links.forEach((link) => (link.id = ''));
   switch (slug) {
@@ -22,8 +23,10 @@ export function route(slug: string) {
       document.querySelector('.bar')!!.id = '';
       document.querySelector('.logo')!!.id = '';
       window.history.replaceState({}, 'Eric Moynihan', '/');
+      root!!.id = '';
       return;
   }
+  root!!.id = 'view';
   document.querySelector('.bar')!!.id = 'navbar';
   document.querySelector('.logo')!!.id = 'navlogo';
 }
