@@ -143,10 +143,12 @@ nav {
   opacity: 1;
   transform: rotateY(0deg) skewY(0deg);
 }
-#navbar > a:hover {
-  font-size: 3em;
-  top: 0;
-  left: 0;
+@media (hover: hover) and (pointer: fine) {
+  #navbar > a:hover {
+    font-size: 3em;
+    top: 0;
+    left: 0;
+  }
 }
 
 a,
@@ -267,7 +269,7 @@ span {
   height: calc(100vh - 5em);
   width: 100%;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.459);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: invert(1);
   transition: all 0.3s;
 }
@@ -284,6 +286,10 @@ span {
   #navbar {
     height: 2.2em;
   }
+  #view {
+    top: 2.2em;
+    height: calc(100vh - 2.2em);
+  }
   #navbar > a {
     font-size: 1.5em;
     top: -0.1em;
@@ -296,6 +302,10 @@ span {
   }
   #navbar {
     height: 1.7em;
+  }
+  #view {
+    top: 1.7em;
+    height: calc(100vh - 1.7em);
   }
   #navbar > a {
     font-size: 0.85em;
