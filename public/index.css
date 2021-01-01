@@ -42,6 +42,17 @@ main {
   transform: scale(1);
 }
 
+#viewing #vid1 {
+  animation: none;
+}
+#viewing #vid2 {
+  display: none !important;
+}
+#viewing #filter {
+  backdrop-filter: sepia(50%) blur(0px);
+  animation: none;
+}
+
 nav {
   position: fixed;
 }
@@ -49,6 +60,9 @@ nav {
 #social {
   bottom: 1em;
   right: 1em;
+}
+#viewing #social {
+  display: none !important;
 }
 
 #social i {
@@ -79,7 +93,7 @@ nav {
 #navbar {
   top: 1.5em;
   background: rgba(8, 8, 8, 0.212);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(25px);
   padding-left: 25vw;
   height: 5em;
 }
@@ -243,13 +257,17 @@ span {
   left: 1.8em;
 }
 
+#viewing #email {
+  display: none !important;
+}
+
 .root {
   position: fixed;
   top: 100vh;
   height: calc(100vh - 5em);
   width: 100%;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.904);
+  background-color: rgba(0, 0, 0, 0.459);
   backdrop-filter: invert(1);
   transition: all 0.3s;
 }
