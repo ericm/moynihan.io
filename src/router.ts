@@ -1,5 +1,10 @@
-export function route(slug: string) {
-  const root = document.querySelector('.root');
+import marked from 'marked';
+
+const projects =
+  'https://raw.githubusercontent.com/ericm/projects/master/README.md';
+
+export async function route(slug: string) {
+  const root = document.querySelector('.root')!!;
   const body = document.body;
   const links = document.querySelectorAll('.bar a');
   links.forEach((link) => (link.id = ''));
@@ -7,6 +12,7 @@ export function route(slug: string) {
     case 'projects':
       window.history.replaceState({}, 'Projects | Eric Moynihan', '/projects');
       links[0].id = 'selected';
+      root.innerHTML = marked(await (await fetch(projects)).text());
       break;
     case 'cv':
       window.history.replaceState({}, 'CV | Eric Moynihan', '/cv');
@@ -24,11 +30,11 @@ export function route(slug: string) {
       document.querySelector('.bar')!!.id = '';
       document.querySelector('.logo')!!.id = '';
       window.history.replaceState({}, 'Eric Moynihan', '/');
-      root!!.id = '';
+      root.id = '';
       body.id = '';
       return;
   }
-  root!!.id = 'view';
+  root.id = 'view';
   body.id = 'viewing';
   document.querySelector('.bar')!!.id = 'navbar';
   document.querySelector('.logo')!!.id = 'navlogo';

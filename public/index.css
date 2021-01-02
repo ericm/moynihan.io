@@ -267,11 +267,50 @@ span {
   position: fixed;
   top: 100vh;
   height: calc(100vh - 5em);
-  width: 100%;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.781);
   backdrop-filter: invert(1);
   transition: all 0.3s;
+  padding: 1em 30vw;
+  font-family: 'Comfortaa', cursive;
+  overflow-y: scroll;
+  color: #fff;
+}
+.root h1 {
+  font-size: 3em;
+  color: #fff;
+  margin: 0.3em 0;
+}
+.root h1 a,
+.root h1 a:visited {
+  color: #fff;
+  padding-left: 0.5em;
+  vertical-align: top;
+  transition: all 0.1s;
+}
+.root h1 a:hover {
+  color: rgb(0, 255, 76);
+}
+.root hr {
+  border: 3px solid #ffffff12;
+  margin-top: 1em;
+}
+.root h1::before {
+  content: '';
+  background: url('/gh.png');
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.root img {
+  width: 100%;
+  margin: 1em 0;
+  border-radius: 0.3em;
+}
+.root li {
+  padding-top: 1em;
 }
 
 #view {
