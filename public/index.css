@@ -331,6 +331,7 @@ span {
 #cv,
 #photography {
   top: 5em;
+  width: 40%;
 }
 
 @media only screen and (max-width: 950px) {
@@ -357,6 +358,7 @@ span {
   #photography {
     top: 2.2em;
     height: calc(100vh - 2.2em);
+    width: 80%;
   }
   #navbar > a {
     font-size: 1.5em;

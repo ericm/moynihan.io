@@ -1,7 +1,8 @@
 import marked from 'marked';
 
 const projects =
-  'https://raw.githubusercontent.com/ericm/projects/master/README.md';
+    'https://raw.githubusercontent.com/ericm/projects/master/README.md',
+  cv = 'https://raw.githubusercontent.com/ericm/cv/master/README.md';
 
 export async function route(slug: string) {
   const root = document.querySelector('.root')!!;
@@ -18,6 +19,7 @@ export async function route(slug: string) {
     case 'cv':
       window.history.replaceState({}, 'CV | Eric Moynihan', '/cv');
       root.id = 'cv';
+      root.innerHTML = marked(await (await fetch(cv)).text());
       links[1].id = 'selected';
       break;
     case 'photography':
