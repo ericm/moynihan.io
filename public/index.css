@@ -284,6 +284,9 @@ span {
 .root h1 a,
 .root h1 a:visited {
   color: #fff;
+}
+#projects h1 a,
+#projects h1 a:visited {
   padding-left: 0.5em;
   vertical-align: top;
   transition: all 0.1s;
@@ -295,7 +298,7 @@ span {
   border: 3px solid #ffffff12;
   margin-top: 1em;
 }
-.root h1::before {
+#projects h1::before {
   content: '';
   background: url('/gh.png');
   display: inline-block;
@@ -309,23 +312,49 @@ span {
   margin: 1em 0;
   border-radius: 0.3em;
 }
+.root ul {
+  list-style-type: none;
+}
 .root li {
   padding-top: 1em;
+  font-family: 'Open Sans', sans-serif;
+}
+.root a {
+  color: rgb(0, 255, 76);
+  transition: all 0.1s;
+}
+.root a:hover {
+  color: rgb(200, 224, 207);
 }
 
-#view {
+#projects,
+#cv,
+#photography {
   top: 5em;
 }
 
 @media only screen and (max-width: 950px) {
+  .root {
+    padding: 1em 10vw;
+  }
   #navlogo {
     font-size: 1.3em;
     text-align: left;
   }
+  .root h1 {
+    font-size: 1.5em;
+    margin-top: 1em;
+  }
+  #projects h1::before {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
   #navbar {
     height: 2.2em;
   }
-  #view {
+  #projects,
+  #cv,
+  #photography {
     top: 2.2em;
     height: calc(100vh - 2.2em);
   }
@@ -342,7 +371,9 @@ span {
   #navbar {
     height: 1.7em;
   }
-  #view {
+  #projects,
+  #cv,
+  #photography {
     top: 1.7em;
     height: calc(100vh - 1.7em);
   }
