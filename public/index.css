@@ -65,6 +65,11 @@ nav {
   display: none !important;
 }
 
+#photography {
+  padding: 1em 0;
+  width: 100% !important;
+}
+
 #social i {
   width: 4em;
   height: 4em;
