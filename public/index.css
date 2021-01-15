@@ -301,7 +301,7 @@ span {
 }
 #projects h1::before {
   content: '';
-  background: url('/gh.png');
+  background: url('/arrows.png');
   display: inline-block;
   width: 3rem;
   height: 3rem;
