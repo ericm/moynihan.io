@@ -105,7 +105,7 @@ nav {
   opacity: 0.5;
   display: inline-block;
   position: relative;
-  transition: all 0.5s;
+  transition: all 0.2s;
   overflow: visible;
   z-index: 3;
   text-shadow: none;
