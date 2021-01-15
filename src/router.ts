@@ -16,25 +16,17 @@ export async function route(slug: string) {
   links.forEach((link) => (link.id = ''));
   switch (slug) {
     case 'projects':
-      window.history.replaceState({}, 'Projects | Eric Moynihan', '/projects');
-      links[0].id = 'selected';
-      root.id = 'projects';
-      root.innerHTML = marked(await (await fetch(projects)).text());
+      render(async () => {
+        root.innerHTML = marked(await (await fetch(projects)).text());
+      }, 0);
       break;
     case 'cv':
-      window.history.replaceState({}, 'CV | Eric Moynihan', '/cv');
-      root.id = 'cv';
-      root.innerHTML = marked(await (await fetch(cv)).text());
-      links[1].id = 'selected';
+      render(async () => {
+        root.innerHTML = marked(await (await fetch(cv)).text());
+      }, 1);
       break;
     case 'photography':
-      links[2].id = 'selected';
-      root.id = 'photography';
-      window.history.replaceState(
-        {},
-        'Photography | Eric Moynihan',
-        '/photography'
-      );
+      render(async () => {}, 2);
       break;
     default:
       document.querySelector('.bar')!!.id = '';
