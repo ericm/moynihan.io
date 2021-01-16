@@ -1,4 +1,6 @@
 import { route } from './router';
+import arrowR from '../public/arrows.png';
+import arrowL from '../public/arrowsL.png';
 
 type Gallery = {
   name: string;
@@ -37,7 +39,7 @@ document
 
 export function photoView(i: number, name: string) {
   let view = document.querySelector('.viewPhoto')!;
-  let buffer = `<img src="${photos[i].download_url}" /><span>${name}</span>`;
+  let buffer = `<img src="${photos[i].download_url}" /><span>${name}</span><img id="arrowR" src="${arrowR}" /><img id="arrowL" src="${arrowL}" />`;
   view.innerHTML = buffer;
   view.id = 'viewPhoto';
 }

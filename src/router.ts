@@ -44,7 +44,8 @@ export async function route(slug: string) {
           let name = image.name.split('.')[0];
           buffer += `<li onclick="Photo.photoView('${i}', '${name}')" class="photo" style="margin: 0; padding: 0; display: flex; height: 30vh; flex-grow: 1;">
             <img style="border-radius: 0; max-height: 100%; min-width: 100%; object-fit: cover; vertical-align: top; margin: 0;" src="${thumbnail}"/>
-            <span>${name}</span>
+            <span id="name">${name}</span>
+            <span id="x">X</span>
           </li>`;
         }
         buffer += `</ul>`;

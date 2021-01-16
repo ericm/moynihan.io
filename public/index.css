@@ -165,6 +165,50 @@ nav {
   opacity: 1;
   transform: rotateY(0deg) skewY(0deg);
 }
+
+.viewPhoto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  z-index: 100;
+  background: #000000d2;
+  text-align: center;
+}
+
+.viewPhoto > img:nth-of-type(1) {
+  height: 90%;
+  margin-top: 3%;
+  min-width: 90%;
+  object-fit: cover;
+}
+
+#viewPhoto {
+  display: block;
+}
+
+#arrowR,
+#arrowL {
+  position: fixed;
+  height: 100px;
+  top: calc(55vh - 100px);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+#arrowR:hover,
+#arrowL:hover {
+  transform: scale(1.2);
+}
+#arrowL {
+  left: 4em;
+}
+
+#arrowR {
+  right: 4em;
+}
+
 @media (hover: hover) and (pointer: fine) {
   #navbar > a:hover {
     font-size: 3em;
