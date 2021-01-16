@@ -39,7 +39,18 @@ document
 
 export function photoView(i: number, name: string) {
   let view = document.querySelector('.viewPhoto')!;
-  let buffer = `<img src="${photos[i].download_url}" /><span>${name}</span><img id="arrowR" src="${arrowR}" /><img id="arrowL" src="${arrowL}" />`;
+  let nextI = +i + 1 === photos.length ? 0 : +i + 1;
+  console.log(nextI);
+  let nextName = photos[nextI].name.split('.')[0];
+  let lastI = +i - 1 < 0 ? photos.length - 1 : +i - 1;
+  console.log(lastI);
+  let lastName = photos[lastI].name.split('.')[0];
+  let buffer = `<img src="${photos[i].download_url}" />
+  <span id="name">${name}</span>
+  <img onclick="Photo.photoView('${nextI}', '${nextName}')" id="arrowR" src="${arrowR}" />
+  <img onclick="Photo.photoView('${lastI}', '${lastName}')" id="arrowL" src="${arrowL}" />
+  <span onclick="document.querySelector('.viewPhoto').id = ''" id="x">X</span>
+  `;
   view.innerHTML = buffer;
   view.id = 'viewPhoto';
 }

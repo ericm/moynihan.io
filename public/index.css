@@ -174,7 +174,7 @@ nav {
   height: 100vh;
   display: none;
   z-index: 100;
-  background: #000000d2;
+  background: #000000e5;
   text-align: center;
 }
 
@@ -207,6 +207,21 @@ nav {
 
 #arrowR {
   right: 4em;
+}
+
+#name {
+  position: fixed;
+  bottom: 2%;
+  left: 0;
+  width: 100vw;
+}
+
+#x {
+  font-weight: bold;
+  top: 1%;
+  right: 1%;
+  font-size: 4em;
+  cursor: pointer;
 }
 
 @media (hover: hover) and (pointer: fine) {
