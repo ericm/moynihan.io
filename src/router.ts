@@ -1,11 +1,11 @@
 import marked from 'marked';
 
+import { setPhotos } from './index';
+
 const projects =
     'https://raw.githubusercontent.com/ericm/projects/master/README.md',
   cv = 'https://raw.githubusercontent.com/ericm/cv/master/README.md',
-  gallery = 'https://api.github.com/repos/ericm/photography/contents/gallery',
-  thumbnails =
-    'https://api.github.com/repos/ericm/photography/contents/thumbnails';
+  gallery = 'https://api.github.com/repos/ericm/photography/contents/gallery';
 
 const pages: string[] = ['Projects', 'CV', 'Photography'];
 
@@ -37,9 +37,15 @@ export async function route(slug: string) {
           type: string;
           path: string;
         }[];
-        for (let image of galleryResp) {
+        setPhotos(galleryResp);
+        for (let i in galleryResp) {
+          let image = galleryResp[i];
           let thumbnail = image.download_url.replace('gallery/', 'thumbnails/');
-          buffer += `<li style="margin: 0; padding: 0; display: flex; height: 30vh; flex-grow: 1;"><img style="border-radius: 0; max-height: 100%; min-width: 100%; object-fit: cover; vertical-align: top; margin: 0;" src="${thumbnail}"/></li>`;
+          let name = image.name.split('.')[0];
+          buffer += `<li onclick="Photo.photoView('${i}', '${name}')" class="photo" style="margin: 0; padding: 0; display: flex; height: 30vh; flex-grow: 1;">
+            <img style="border-radius: 0; max-height: 100%; min-width: 100%; object-fit: cover; vertical-align: top; margin: 0;" src="${thumbnail}"/>
+            <span>${name}</span>
+          </li>`;
         }
         buffer += `</ul>`;
         console.log(galleryResp);

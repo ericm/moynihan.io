@@ -1,5 +1,14 @@
 import { route } from './router';
 
+type Gallery = {
+  name: string;
+  download_url: string;
+  type: string;
+  path: string;
+}[];
+
+let photos: Gallery;
+
 function parseSlug(url: string[]): string {
   return url.reduce((p, c) => (c !== '' ? c : p));
 }
@@ -25,3 +34,14 @@ document
 document
   .querySelectorAll('.logo')
   .forEach((e) => e.addEventListener('click', link));
+
+export function photoView(i: number, name: string) {
+  let view = document.querySelector('.viewPhoto')!;
+  let buffer = `<img src="${photos[i].download_url}" /><span>${name}</span>`;
+  view.innerHTML = buffer;
+  view.id = 'viewPhoto';
+}
+
+export let setPhotos = (p: Gallery) => {
+  photos = p;
+};

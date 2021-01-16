@@ -141,6 +141,22 @@ nav {
   transform: rotateY(-25deg) skewY(-20deg);
 }
 
+.photo {
+  cursor: pointer;
+}
+
+.photo span {
+  margin-top: 26vh;
+  margin-left: 1em;
+  text-shadow: 0px 0px 6px #000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.photo:hover span {
+  opacity: 1;
+}
+
 .bar a:hover {
   top: -0.5em;
   text-shadow: 0px 0px 15em rgba(0, 0, 0, 1);
