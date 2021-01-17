@@ -14,7 +14,7 @@ RUN apt update && apt-get -y install gconf-service libxext6 libxfixes3 libxi6 li
 
 COPY --from=dev /app .
 
-RUN npm run build
+RUN yarn build
 
 FROM nginx:latest as prod
 
@@ -26,4 +26,4 @@ COPY --from=build_prod /app/dist .
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
-LABEL maintainer="netsoc@uccsocieties.ie"
+LABEL maintainer="git@moynihan.io"
