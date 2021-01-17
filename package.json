@@ -2,7 +2,8 @@
   "name": "moynihan.io",
   "version": "1.0.0",
   "scripts": {
-    "start": "parcel public/index.html --global Photo"
+    "start": "parcel public/index.html --global Photo",
+    "build": "parcel build public/index.html",
   },
   "repository": "git@github.com:ericm/moynihan.io.git",
   "author": "Eric Moynihan <git@moynihan.io>",
