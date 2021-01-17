@@ -68,6 +68,7 @@ nav {
 #photography {
   padding: 0;
   width: 100% !important;
+  overflow-x: hidden;
 }
 
 #social i {
