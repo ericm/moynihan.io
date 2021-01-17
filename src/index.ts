@@ -46,15 +46,19 @@ export function photoView(i: number, name: string) {
   console.log(lastI);
   let lastName = photos[lastI].name.split('.')[0];
   let buffer = `<img src="${photos[i].download_url}" />
-  <span id="name">${name}</span>
-  <img onclick="Photo.photoView('${nextI}', '${nextName}')" id="arrowR" src="${arrowR}" />
-  <img onclick="Photo.photoView('${lastI}', '${lastName}')" id="arrowL" src="${arrowL}" />
-  <span onclick="document.querySelector('.viewPhoto').id = ''" id="x">X</span>
+    <span id="name">${name}</span>
+    <img onclick="Photo.photoView('${nextI}', '${nextName}')" id="arrowR" src="${arrowR}" />
+    <img onclick="Photo.photoView('${lastI}', '${lastName}')" id="arrowL" src="${arrowL}" />
+    <span onclick="document.querySelector('.viewPhoto').id = ''" id="x">X</span>
   `;
   view.innerHTML = buffer;
   view.id = 'viewPhoto';
 }
 
 export let setPhotos = (p: Gallery) => {
-  photos = p;
+  if (photos) {
+    photos.concat(p);
+  } else {
+    photos = p;
+  }
 };

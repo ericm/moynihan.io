@@ -66,7 +66,7 @@ nav {
 }
 
 #photography {
-  padding: 1em 0;
+  padding: 0;
   width: 100% !important;
 }
 
@@ -222,6 +222,12 @@ nav {
   right: 1%;
   font-size: 4em;
   cursor: pointer;
+}
+
+#photography h3 {
+  font-size: 2em;
+  text-align: center;
+  line-height: 3em;
 }
 
 @media (hover: hover) and (pointer: fine) {

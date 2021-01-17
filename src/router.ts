@@ -5,7 +5,8 @@ import { setPhotos } from './index';
 const projects =
     'https://raw.githubusercontent.com/ericm/projects/master/README.md',
   cv = 'https://raw.githubusercontent.com/ericm/cv/master/README.md',
-  gallery = 'https://api.github.com/repos/ericm/photography/contents/gallery';
+  galleryIndex =
+    'https://raw.githubusercontent.com/ericm/photography/main/index.json';
 
 const pages: string[] = ['Projects', 'CV', 'Photography'];
 
@@ -30,25 +31,39 @@ export async function route(slug: string) {
       break;
     case 'photography':
       render(async () => {
-        let buffer = `<ul style="display: flex; flex-wrap: wrap;">`;
-        const galleryResp = (await (await fetch(gallery)).json()) as {
+        let galleries = (await (await fetch(galleryIndex)).json()) as {
           name: string;
-          download_url: string;
-          type: string;
-          path: string;
+          gallery: string;
         }[];
-        setPhotos(galleryResp);
-        for (let i in galleryResp) {
-          let image = galleryResp[i];
-          let thumbnail = image.download_url.replace('gallery/', 'thumbnails/');
-          let name = image.name.split('.')[0];
-          buffer += `<li onclick="Photo.photoView('${i}', '${name}')" class="photo" style="margin: 0; padding: 0; display: flex; height: 30vh; flex-grow: 1;">
+        let buffer = '';
+        let lastI = 0;
+        for (let meta of galleries) {
+          buffer += `<h3>${meta.name}</h3><ul style="display: flex; flex-wrap: wrap;">`;
+          let gallery = `https://api.github.com/repos/ericm/photography/contents/${meta.gallery}`;
+          const galleryResp = (await (await fetch(gallery)).json()) as {
+            name: string;
+            download_url: string;
+            type: string;
+            path: string;
+          }[];
+          setPhotos(galleryResp);
+          for (let i in galleryResp) {
+            let image = galleryResp[i];
+            let thumbnail = image.download_url.replace(
+              'gallery/',
+              'thumbnails/'
+            );
+            let name = image.name.split('.')[0];
+            buffer += `<li onclick="Photo.photoView('${
+              +i + lastI
+            }', '${name}')" class="photo" style="margin: 0; padding: 0; display: flex; height: 30vh; flex-grow: 1;">
             <img style="border-radius: 0; max-height: 100%; min-width: 100%; object-fit: cover; vertical-align: top; margin: 0;" src="${thumbnail}"/>
             <span>${name}</span>
           </li>`;
+          }
+          buffer += `</ul>`;
+          lastI += galleryResp.length;
         }
-        buffer += `</ul>`;
-        console.log(galleryResp);
         root.innerHTML = buffer;
       }, 2);
       break;
