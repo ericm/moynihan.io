@@ -57,7 +57,7 @@ export function photoView(i: number, name: string) {
 
 export let setPhotos = (p: Gallery) => {
   if (photos) {
-    photos.concat(p);
+    photos = photos.concat(p);
   } else {
     photos = p;
   }

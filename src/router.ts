@@ -40,18 +40,16 @@ export async function route(slug: string) {
         for (let meta of galleries) {
           buffer += `<h3>${meta.name}</h3><ul style="display: flex; flex-wrap: wrap;">`;
           let gallery = `https://api.github.com/repos/ericm/photography/contents/gallery/${meta.gallery}`;
-          const galleryResp = (await (await fetch(gallery)).json()) as {
+          let galleryResp = (await (await fetch(gallery)).json()) as {
             name: string;
             download_url: string;
             type: string;
             path: string;
           }[];
+          galleryResp = galleryResp.filter((v) => v.type !== 'dir');
           setPhotos(galleryResp);
           for (let i in galleryResp) {
             let image = galleryResp[i];
-            if (image.type === 'dir') {
-              continue;
-            }
             let thumbnail = image.download_url.replace(
               `${meta.gallery}/`,
               `${meta.gallery}/thumbnails/`
