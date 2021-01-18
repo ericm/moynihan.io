@@ -11,22 +11,25 @@ type Gallery = {
 
 let photos: Gallery;
 
-function parseSlug(url: string[]): string {
-  return url.reduce((p, c) => (c !== '' ? c : p));
+function parseSlug(url: string[]): [string, string] {
+  return [
+    url.reduce((p, c) => (c !== '' ? c.split('#')[0] : p)),
+    url.reduce((p, c) => (c !== '' ? c : p)),
+  ];
 }
 
 function init() {
   const url = document.URL.split('/');
   console.log(url);
-  const slug = parseSlug(url);
-  route(slug);
+  const [slug, full] = parseSlug(url);
+  route(slug, full);
 }
 
 function link(e: Event) {
   e.stopPropagation();
   e.preventDefault();
   const slug = (e.target as HTMLAnchorElement).innerText.toLowerCase();
-  route(slug);
+  route(slug, slug);
 }
 
 window.addEventListener('load', init);

@@ -13,7 +13,7 @@ const pages: string[] = ['Projects', 'CV', 'Photography'];
 let links: NodeListOf<Element>;
 let root: Element;
 
-export async function route(slug: string) {
+export async function route(slug: string, full: string) {
   root = document.querySelector('.root')!!;
   const body = document.body;
   links = document.querySelectorAll('.bar a');
