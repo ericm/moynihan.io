@@ -24,6 +24,7 @@ function init() {
 
 function link(e: Event) {
   e.stopPropagation();
+  e.preventDefault();
   const slug = (e.target as HTMLAnchorElement).innerText.toLowerCase();
   route(slug);
 }
