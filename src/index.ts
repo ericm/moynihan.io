@@ -32,7 +32,7 @@ function link(e: Event) {
   route(slug, slug);
 }
 
-window.addEventListener('load', init);
+window.addEventListener('DOMContentLoaded', init);
 window.addEventListener('locationchange', init);
 document
   .querySelectorAll('.bar>a')
