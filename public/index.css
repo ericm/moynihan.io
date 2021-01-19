@@ -391,6 +391,26 @@ span {
   margin: 1em 0 0.5em;
 }
 
+#cv h1 {
+  font-size: 3em;
+}
+#cv h2 {
+  font-size: 2em;
+}
+#cv h3 {
+  margin-top: 1em;
+  font-weight: normal;
+}
+
+#cv ul {
+  list-style-type: disc;
+  margin-left: 1em;
+}
+
+#cv strong {
+  font-weight: bolder;
+}
+
 #projects h1::before {
   content: '';
   background: url('/arrows.png');
