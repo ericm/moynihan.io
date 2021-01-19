@@ -394,6 +394,10 @@ span {
 #cv {
   height: calc(100vh - 7em);
 }
+
+#cv p strong {
+  font-weight: bolder;
+}
 #cv h1 {
   font-size: 3em;
 }
