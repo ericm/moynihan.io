@@ -384,7 +384,7 @@ span {
 }
 .root hr {
   border: 3px solid #ffffff12;
-  margin-top: 1em;
+  margin: 2em 0;
 }
 #projects h1::before {
   content: '';
@@ -399,6 +399,9 @@ span {
   width: 100%;
   margin: 1em 0;
   border-radius: 0.3em;
+}
+.root a > img {
+  width: auto;
 }
 .root ul {
   list-style-type: none;
