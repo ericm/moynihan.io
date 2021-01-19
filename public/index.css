@@ -386,6 +386,11 @@ span {
   border: 3px solid #ffffff12;
   margin: 2em 0;
 }
+
+.root h2 {
+  margin: 1em 0 0.5em;
+}
+
 #projects h1::before {
   content: '';
   background: url('/arrows.png');
