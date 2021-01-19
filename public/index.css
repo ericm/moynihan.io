@@ -7,7 +7,7 @@
 }
 
 main {
-  background: url(./bg/1.png) var(--background);
+  background: url(./bg/1.jpg) var(--background);
   background-attachment: fixed;
   background-size: cover;
   background-position: center 0px;

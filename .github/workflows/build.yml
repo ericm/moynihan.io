@@ -32,3 +32,11 @@ jobs:
           # Path to the build context
           path: .
           tags: latest,${{ github.sha }}
+
+      - name: Deploy
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: ericm/deploy
+          event-type: deploy
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'

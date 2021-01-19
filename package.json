@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel public/index.html --global Photo",
-    "build": "parcel build public/index.html"
+    "build": "parcel build public/index.html --global Photo"
   },
   "repository": "git@github.com:ericm/moynihan.io.git",
   "author": "Eric Moynihan <git@moynihan.io>",
