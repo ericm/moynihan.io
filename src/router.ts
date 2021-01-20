@@ -6,7 +6,8 @@ const projects =
     'https://raw.githubusercontent.com/ericm/projects/master/README.md',
   cv = 'https://raw.githubusercontent.com/ericm/cv/master/README.md',
   galleryIndex =
-    'https://raw.githubusercontent.com/ericm/photography/main/index.json';
+    'https://raw.githubusercontent.com/ericm/photography/main/index.json',
+  downloadCV = 'https://github.com/ericm/cv/raw/master/README.pdf';
 
 const pages: string[] = ['Projects', 'CV', 'Photography'];
 
@@ -27,6 +28,7 @@ export async function route(slug: string, full: string) {
     case 'cv':
       render(async () => {
         root.innerHTML = marked(await (await fetch(cv)).text());
+        document.body.innerHTML += `<a download="Eric Moynihan CV" id="download" href="${downloadCV}">Download CV 🗎</a>`;
       }, 1);
       break;
     case 'photography':
