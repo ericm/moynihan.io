@@ -498,10 +498,12 @@ span {
     height: 1.7em;
   }
   #projects,
-  #cv,
-  #photography {
+  #cv {
     top: 1.7em;
     height: calc(100vh - 3.7em);
+  }
+  #photography {
+    height: calc(100vh - 1.7em);
   }
   #navbar > a {
     font-size: 0.85em;
