@@ -501,7 +501,7 @@ span {
   #cv,
   #photography {
     top: 1.7em;
-    height: calc(100vh - 1.7em);
+    height: calc(100vh - 3.7em);
   }
   #navbar > a {
     font-size: 0.85em;
