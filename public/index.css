@@ -342,7 +342,7 @@ span {
   padding-left: 5vw;
 }
 
-#navlogo a, #navlogo:hover {
+.logo a, .logo a:hover, .logo a:visited, .logo a:active {
   color: #fff;
 }
 
