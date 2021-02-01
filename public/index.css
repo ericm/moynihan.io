@@ -342,7 +342,10 @@ span {
   padding-left: 5vw;
 }
 
-.logo a, .logo a:hover, .logo a:visited, .logo a:active {
+.logo a,
+.logo a:hover,
+.logo a:visited,
+.logo a:active {
   color: #fff;
 }
 
@@ -471,7 +474,8 @@ span {
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   padding: 1em 2em;
-  top: 5em;
+  top: 0;
+  left: 0;
   z-index: 1000;
 }
 

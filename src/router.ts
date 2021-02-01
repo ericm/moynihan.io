@@ -27,8 +27,9 @@ export async function route(slug: string, full: string) {
       break;
     case 'cv':
       render(async () => {
-        document.body.innerHTML += `<a download="Eric Moynihan CV" id="download" href="${downloadCV}">Download CV 🗎</a>`;
-        root.innerHTML = marked(await (await fetch(cv)).text());
+        root.innerHTML =
+          marked(await (await fetch(cv)).text()) +
+          `<a download="Eric Moynihan CV" id="download" href="${downloadCV}">Download CV 🗎</a>`;
       }, 1);
       break;
     case 'photography':
