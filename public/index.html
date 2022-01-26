@@ -19,50 +19,25 @@
     <meta name="author" content="Eric Moynihan" />
     <title>Eric Moynihan</title>
     <link rel="stylesheet" href="index.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Podkova:wght@700&display=swap"
       rel="stylesheet"
     />
   </head>
+
   <body>
     <main>
-      <div class="overlay" id="vid1"></div>
-      <div class="overlay" id="vid2"></div>
-      <div class="overlay" id="filter"></div>
-      <span class="logo"><a href="/">Eric Moynihan</a></span>
-      <span id="email">eric@moynihan.io</span>
-      <nav id="social">
-        <a href="https://www.linkedin.com/in/eric-moynihan" target="_blank"
-          ><i
-            alt="linkedin"
-            title="LinkedIn"
-            style="background-image: url(./social/linkedin.svg)"
-          ></i
-        ></a>
-        <a href="https://github.com/ericm" target="_blank"
-          ><i
-            alt="github"
-            title="GitHub"
-            style="background-image: url(./social/github.svg)"
-          ></i
-        ></a>
-      </nav>
-      <nav class="bar">
-        <a href="/projects">Projects</a>
-        <a href="/cv">CV</a>
-        <a href="/photography">Photography</a>
-      </nav>
-      <div class="root"></div>
-      <div class="viewPhoto"></div>
+      <article>
+        <span class="logo"><a href="/">Eric Moynihan</a></span>
+        <span id="email">eric@moynihan.io</span>
+        <nav class="bar">
+          <a class="disabled">Projects</a>
+          <a href="/cv">CV</a>
+          <a class="disabled">Photography</a>
+        </nav>
+      </article>
     </main>
     <script src="../src/index.ts"></script>
   </body>

@@ -10,7 +10,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "parcel": "^1.12.4",
+    "parcel": "1.12.3",
     "typescript": "^3.9.5"
   },
   "dependencies": {
