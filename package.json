@@ -18,5 +18,8 @@
     "marked": "^1.2.7",
     "parcel-plugin-prerender-custom": "^1.4.5",
     "router": "^1.3.5"
-  }
+  },
+  "staticFiles": {
+        "staticPath": ["./public/cv.pdf"]
+    }
 }
